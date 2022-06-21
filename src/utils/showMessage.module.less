@@ -1,0 +1,40 @@
+@import '@/styles/mixin.less';
+@import '@/styles/var.less';
+.message {
+  .self-center();
+  z-index: 999;
+  box-shadow: -2px -2px 5px rgba(0, 0, 0, 0.5);  //盒子阴影
+  border-radius: 5px;
+  padding: 10px 30px;
+  line-height: 2;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  transform: translateY(25px) translate(-50%, -50%); // 将消息初始位置稍微往下
+  opacity: 0;
+  transition: 0.5s;
+  white-space: nowrap;
+  // message-info
+  // message-success
+  // message-warn
+  // message-error
+  // 简写，就不用每个都单独开一个
+  &-info{
+    background-color: @primary;
+  }
+  &-success{
+    background-color: @success;
+  }
+  &-warn{
+    background-color: @warn;
+  }
+  &-error{
+    background-color: @danger;
+  }
+  
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 7px;
+}

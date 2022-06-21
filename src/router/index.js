@@ -1,27 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import routes from './routers'
+import { siteTitleController } from '@/utils'
 
-Vue.use(VueRouter)
-
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+// 看看是否是生产环境，生产环境通过script引入的vuex会产生一个VueRouter全局变量，此时不需要注册插件
+if (!window.VueRouter) {
+  // 注册VueRouter插件
+  Vue.use(VueRouter)
+}
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
+})
+
+// 后置导航守卫，跳转过去之后进行更改页面标题的操作
+router.afterEach((to, from) => {
+  // console.log(to.meta.title)
+  if (to.meta.title) {
+    siteTitleController.setRouteTitle(to.meta.title)
+  }
 })
 
 export default router
