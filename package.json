@@ -8,7 +8,8 @@
     "build modern": "vue-cli-service build --modern",
     "test:Avatar": "vue serve ./src/components/Avatar/test.vue",
     "test:Icon": "vue serve ./src/components/Icon/test.vue",
-    "test:Pager": "vue serve ./src/components/Pager/test.vue"
+    "test:Pager": "vue serve ./src/components/Pager/test.vue",
+    "deploy": "gh-pages -d dist -r https://github.com/Newcy4/my-blog.git -b gh-pages"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -25,6 +26,7 @@
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "gh-pages": "^4.0.0",
     "less": "^4.0.0",
     "less-loader": "^8.0.0",
     "vue-template-compiler": "^2.6.14",
